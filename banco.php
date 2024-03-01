@@ -1,24 +1,24 @@
 <?php
 class Banco
 {
-    private static $dbName = 'db_brazuna';
+    private static $dbNome = 'db_brazuna';
     private static $dbHost = 'localhost';
-    private static $dbUser = 'root';
-    private static $dbPass = '';
+    private static $dbUsuario = 'root';
+    private static $dbSenha = '';
     private static $cont = null;
 
     public function __construct()
     {
-        die('a função Init não é permitido');
+        die('a função Init não é permitido!');
     }
 
     public static function conectar()
     {
         if (null == self::$cont) {
             try {
-                self::$cont = new PDO("mysql:host=" . self::$dbHost . ";" . "dbname=" . self::$dbName, self::$dbUser, self::$dbPass);
-            } catch (PDOException $ex) {
-                die($ex->getMessage());
+                self::$cont = new PDO("mysql:host=" . self::$dbHost . ";" . "dbname=" . self::$dbNome, self::$dbUsuario, self::$dbSenha);
+            } catch (PDOException $exception) {
+                die($exception->getMessage());
             }
         }
         return self::$cont;
